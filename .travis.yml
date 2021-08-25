@@ -8,3 +8,16 @@ before install:
 
 script:
   - docker run -e CI=true inomag/laughing-eureka npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: "laughing-eureka"
+  env: "Laughingeureka-env"
+  bucket_name: "elasticbeanstalk-us-east-1-633194321016"
+  bucket_path: "laughing-eureka"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
