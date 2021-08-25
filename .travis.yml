@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before install:
+  - docker build -t inomag/laughing-eureka -f Dockerfile.dev .
+
+script:
+  - docker run inomag/laughing-eureka npm run test -- --coverage
