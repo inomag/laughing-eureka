@@ -5,5 +5,6 @@ services:
 before install:
   - docker build -t inomag/laughing-eureka -f Dockerfile.dev .
 
+
 script:
   - docker run -e CI=true inomag/laughing-eureka npm run test -- --coverage
